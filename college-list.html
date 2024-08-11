@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College List</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="college-list-container">
+        <h2>Colleges Offering <span id="career-name"></span></h2>
+        <ul id="college-list">
+            <!-- College list items will be populated here -->
+        </ul>
+    </div>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Sample data for colleges
+        const colleges = {
+            engineering: [
+                { name: 'MIT', location: 'Cambridge, MA' },
+                { name: 'Stanford University', location: 'Stanford, CA' },
+                { name: 'Harvard University', location: 'Cambridge, MA' }
+            ],
+            medicine: [
+                { name: 'Johns Hopkins University', location: 'Baltimore, MD' },
+                { name: 'University of Pennsylvania', location: 'Philadelphia, PA' }
+            ],
+            // Add more college data as needed for other careers
+        };
+
+        const selectedCareer = localStorage.getItem('selectedCareer');
+        const careerNameElement = document.getElementById('career-name');
+        const collegeListElement = document.getElementById('college-list');
+
+        if (selectedCareer && colleges[selectedCareer]) {
+            careerNameElement.textContent = selectedCareer.charAt(0).toUpperCase() + selectedCareer.slice(1);
+            colleges[selectedCareer].forEach(college => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${college.name}, ${college.location}`;
+                collegeListElement.appendChild(listItem);
+            });
+        } else {
+            collegeListElement.innerHTML = '<li>No colleges found for the selected career.</li>';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitude Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="aptitude-test-container">
+        <h2>Aptitude Test</h2>
+        <form id="aptitude-test-form">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <label><input type="radio" name="q1" value="Paris" required> Paris</label><br>
+                <label><input type="radio" name="q1" value="London"> London</label><br>
+                <label><input type="radio" name="q1" value="Rome"> Rome</label>
+            </div>
+            
+            <div class="question">
+                <p>2. What is 2 + 2?</p>
+                <label><input type="radio" name="q2" value="3" required> 3</label><br>
+                <label><input type="radio" name="q2" value="4"> 4</label><br>
+                <label><input type="radio" name="q2" value="5"> 5</label>
+            </div>
+            
+            <div class="question">
+                <p>3. Which is the largest planet in our solar system?</p>
+                <label><input type="radio" name="q3" value="Earth" required> Earth</label><br>
+                <label><input type="radio" name="q3" value="Jupiter"> Jupiter</label><br>
+                <label><input type="radio" name="q3" value="Mars"> Mars</label>
+            </div>
+            
+            <button type="submit">Submit Test</button>
+        </form>
+    </div>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        const aptitudeForm = document.getElementById('aptitude-test-form');
+        aptitudeForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const answers = {
+                q1: document.querySelector('input[name="q1"]:checked').value,
+                q2: document.querySelector('input[name="q2"]:checked').value,
+                q3: document.querySelector('input[name="q3"]:checked').value,
+            };
+
+            // Save test results to Firestore
+            try {
+                const userId = auth.currentUser.uid;
+                await addDoc(collection(db, 'aptitude-tests'), {
+                    uid: userId,
+                    answers
+                });
+                alert('Test Submitted Successfully');
+                window.location.href = 'test-completion.html'; // Redirect to Test Completion page
+            } catch (error) {
+                alert('Error submitting test: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

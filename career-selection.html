@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Selection</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="career-selection-container">
+        <h2>Select Your Career Path</h2>
+        <form id="career-selection-form">
+            <label for="career">Choose a career:</label>
+            <select id="career" required>
+                <option value="">--Select a career--</option>
+                <option value="engineering">Engineering</option>
+                <option value="medicine">Medicine</option>
+                <option value="arts">Arts</option>
+                <option value="science">Science</option>
+                <option value="law">Law</option>
+                <option value="business">Business</option>
+                <!-- Add more career options as needed -->
+            </select>
+            <button type="submit">Proceed</button>
+        </form>
+    </div>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        const careerForm = document.getElementById('career-selection-form');
+        careerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const career = document.getElementById('career').value;
+
+            // Store the selected career in localStorage or Firestore
+            localStorage.setItem('selectedCareer', career);
+
+            // Redirect to the College List page
+            window.location.href = 'college-list.html';
+        });
+    </script>
+</body>
+</html>

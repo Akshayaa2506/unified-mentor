@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="details-container">
+        <h2>Student Details</h2>
+        <form id="student-details-form">
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" required>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+            
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" required>
+            
+            <label for="address">Address:</label>
+            <textarea id="address" required></textarea>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            
+            <button type="submit">Submit Details</button>
+        </form>
+    </div>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        const detailsForm = document.getElementById('student-details-form');
+        detailsForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('full-name').value;
+            const dob = document.getElementById('dob').value;
+            const contact = document.getElementById('contact').value;
+            const address = document.getElementById('address').value;
+            const email = document.getElementById('email').value;
+
+            // Assuming user is logged in, fetch user ID
+            const userId = auth.currentUser.uid;
+
+            // Save student details to Firestore
+            try {
+                await addDoc(collection(db, 'students-details'), {
+                    uid: userId,
+                    fullName,
+                    dob,
+                    contact,
+                    address,
+                    email
+                });
+                alert('Details Submitted Successfully');
+                window.location.href = 'aptitude-test.html'; // Redirect to Aptitude Test page
+            } catch (error) {
+                alert('Error submitting details: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,94 +1,188 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    margin: 200px;
-    padding: 200px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    background-color: aqua;
 }
 
 header {
     background-color: #333;
-    color: white;
-    padding: 1em 0;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
     text-align: center;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 1em;
+.logo {
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-nav ul li a {
+.nav-links {
+    display: inline-block;
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.nav-links a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 
-section {
-    padding: 2em 1em;
+.hero {
     text-align: center;
+    padding: 50px;
+    background: #f4f4f4;
 }
 
-.project {
-    margin-bottom: 1em;
+.cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.login-container, .signup-container, .college-signup-container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
 }
 
 form {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
-form label {
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-form input,
-form textarea {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
+input[type="email"], input[type="password"], input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 0.5em;
-    background-color: #333;
+    padding: 10px;
+    background-color: #007bff;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
+button:hover {
+    background-color: #0056b3;
 }
 
-@media (min-width: 600px) {
-    nav ul li {
-        margin: 0 2em;
+p {
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: block;
+        text-align: center;
     }
 
-    section {
-        padding: 4em 2em;
+    .login-container, .signup-container, .college-signup-container {
+        width: 90%;
     }
+}
 
-    form input,
-    form textarea {
-        padding: 1em;
-    }
+.career-selection-container, .college-list-container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
 
-    button {
-        width: auto;
-        padding: 1em 2em;
-    }
+h2 {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: blueviolet;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.details-container, .aptitude-test-container, .completion-container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.cta-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
